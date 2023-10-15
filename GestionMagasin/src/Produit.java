@@ -1,3 +1,5 @@
+import Execption.PrixNegatifException;
+
 import java.util.Date;
 public class Produit {
 
@@ -14,12 +16,17 @@ public class Produit {
         libelle=lb;
     }
 
-    public Produit(int id,String marque,String lib,float prix)
+    public Produit(int id,String marque,String lib,float prix) throws PrixNegatifException
     {
         identifiant=id;
         this.marque=marque;
         libelle=lib;
-        this.prix=prix;
+        if (prix > 0) {
+            this.prix = prix;
+        } else {
+            throw new PrixNegatifException("Le prix est négatif");
+        }
+        this.dateexp = new Date();
     }
     public Produit(){}
 

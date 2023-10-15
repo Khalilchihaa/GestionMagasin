@@ -1,6 +1,7 @@
 package Test;
 
 import Entite.Produit;
+import Execption.MagasinPleinException;
 import Gestion.Magasin;
 import Gestion_Employee.Caissier;
 import Gestion_Employee.Responsable;
@@ -9,8 +10,7 @@ import Gestion_Employee.Vendeur;
 import java.util.Date;
 public class Test {
 
-    public static  void main(String [] arg )
-    {
+    public static  void main(String [] arg ) throws MagasinPleinException {
         Produit p1=new Produit();
 
         System.out.println("identifiant :"+p1.getIdentifiant());
@@ -99,7 +99,7 @@ public class Test {
         System.out.println(responsable1.calculersalaire());
         magasin1.afficheSalaires();
         magasin2.afficheNombreEmployesParType();
-        
+
     }
 
 }

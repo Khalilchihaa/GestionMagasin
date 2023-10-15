@@ -1,6 +1,7 @@
 package Gestion;
 
 import Entite.Produit;
+import Execption.MagasinPleinException;
 import Gestion_Employee.Employe;
 import Gestion_Employee.Responsable;
 
@@ -26,7 +27,21 @@ public class Magasin {
         adresse = ad;
     }
 
-    public void ajouterProduit(Produit p) {
+    public void ajouterProduit(Produit p) throws MagasinPleinException {
+        if (!chercherPro(p)) {
+            if (totalPr < tabprod.length) {
+                tabprod[comp] = p;;
+                totalPr++;
+                comp++;
+            } else {
+                throw new MagasinPleinException("Magasin est plein");
+            }
+        } else {
+            System.out.println("le produit existe");
+        }
+    }
+
+   /* public void ajouterProduit(Produit p) {
         if (!chercherPro(p)) {
             if (totalPr < tabprod.length) {
                 tabprod[comp] = p;
@@ -40,24 +55,10 @@ public class Magasin {
 
             System.out.println("le produit existe");
         }
-    }
-
-
-    /*public  void ajouter(Produit p)
-    {if(chercherPro(p)==false){
-        if(comp<CAPACITE_PR){
-       tabprod[comp]=p;
-       comp++;
-       totalPr++;}
-        else{
-
-            System.out.println("Magasin plein");
-        }}
-        else {
-
-        System.out.println("le produit existe");
-    }
     }*/
+
+
+
     public void ajouter_emp(Employe e) {
 
         if (comp < 20) {
